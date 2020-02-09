@@ -3,6 +3,8 @@ services:
   - docker
 
 script:
-  - docker build sauryaacharya/nginx .
+  - docker build -t sauryaacharya/nginx .
+
+after_succes:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push sauryaacharya/nginx
